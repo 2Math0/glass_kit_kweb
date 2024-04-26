@@ -70,7 +70,7 @@ class GlassContainer extends StatelessWidget {
             'Both borderColor and borderGradient cannot be null\n'),
         assert(shape != BoxShape.circle || borderRadius == null,
             'The [borderRadius] needs to be null if the shape is [BoxShape.circle]\n'),
-        assert(kIsWeb != true || borderColor != null || borderGradient != null,
+        assert( != true || borderColor != null || borderGradient != null,
             'borderColor cannot be null when runing on the Web\n'),
         super(key: key);
 
@@ -366,7 +366,7 @@ class GlassContainer extends StatelessWidget {
 
     // If the border is gradient border then paint the border according to the shape
     // Incase the app is compiled to run on web then CustomPaint wont work
-    if (!_colorOnlyBorder && !kIsWeb) {
+    if (!_colorOnlyBorder) {
       assert(borderGradient != null);
       if (_isCircle) {
         assert(borderRadius == null);
