@@ -130,7 +130,7 @@ class GlassContainer extends StatelessWidget {
         child = child,
         assert(shape != BoxShape.circle || borderRadius == null,
             'The [borderRadius] needs to be null if the shape is [BoxShape.circle]\n'),
-        assert(kIsWeb != true || borderColor != null,
+        assert(kIsWeb != true || borderColor != null || borderGradient != null,
             'borderColor cannot be null when runing on the Web\n'),
         super(key: key);
 
