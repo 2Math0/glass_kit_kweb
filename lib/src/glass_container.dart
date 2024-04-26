@@ -70,7 +70,7 @@ class GlassContainer extends StatelessWidget {
             'Both borderColor and borderGradient cannot be null\n'),
         assert(shape != BoxShape.circle || borderRadius == null,
             'The [borderRadius] needs to be null if the shape is [BoxShape.circle]\n'),
-        assert(kIsWeb != true || borderColor != null,
+        assert(kIsWeb != true || borderColor != null || borderGradient != null,
             'borderColor cannot be null when runing on the Web\n'),
         super(key: key);
 
@@ -330,8 +330,8 @@ class GlassContainer extends StatelessWidget {
   /// If its color-only-border, then return [Border] to be used
   /// in the decoration of the container.
   Border? get _border {
-    if (_colorOnlyBorder || kIsWeb) {
-      assert(borderColor != null);
+    if (_colorOnlyBorder && kIsWeb) {
+      assert(borderColor != null );
       return Border.all(
         color: borderColor!,
         width: borderWidth,
